@@ -1,0 +1,125 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [2.3522, 48.8566]
+        },
+        "properties": {
+          "insectCount": 12
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.8055, 45.7640]
+        },
+        "properties": {
+          "insectCount": 5
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [-0.1278, 51.5074]
+        },
+        "properties": {
+          "insectCount": 23
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [3.0643, 50.6333]
+        },
+        "properties": {
+          "insectCount": 8
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [1.4442, 43.6045]
+        },
+        "properties": {
+          "insectCount": 3
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.3698, 43.2965]
+        },
+        "properties": {
+          "insectCount": 17
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [1.4442, 46.2276]
+        },
+        "properties": {
+          "insectCount": 15
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [3.8767, 43.6108]
+        },
+        "properties": {
+          "insectCount": 101
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [2.7775, 49.0779]
+        },
+        "properties": {
+          "insectCount": 6
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [0.7196, 47.4784]
+        },
+        "properties": {
+          "insectCount": 14
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.3794, 48.7924]
+        },
+        "properties": {
+          "insectCount": 46
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [1.1149, 49.4542]
+        },
+        "properties": {
+          "insectCount": 25
+        }
+      }
+    ]}
+    

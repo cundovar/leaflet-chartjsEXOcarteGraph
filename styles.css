@@ -1,0 +1,42 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart2{
+    width: 340px;
+    border: solid red 1px;
+    display: flex;
+    justify-self: flex-start;
+    
+}
+#map{
+    border: solid red 1px;
+    width: 500px;
+    height: 500px;
+    margin-top: 10rem;
+}
+#map .leaflet-pane {
+    background-color: pink;
+  }
+  @media screen and (max-width: 800px) {
+    .container{
+        flex-direction: column;
+    }
+    .chart{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .chart2{
+        width: 300px;
+    }
+    #map{
+        width: 98%;
+    }
+
+  }
+
+
