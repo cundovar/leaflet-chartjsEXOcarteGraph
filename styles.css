@@ -6,13 +6,13 @@
 
 .chart2{
     width: 340px;
-    border: solid red 1px;
+    /* border: solid red 1px; */
     display: flex;
     justify-self: flex-start;
     
 }
 #map{
-    border: solid red 1px;
+    /* border: solid red 1px; */
     width: 500px;
     height: 500px;
     margin-top: 10rem;
