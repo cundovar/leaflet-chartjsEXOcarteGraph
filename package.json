@@ -2,5 +2,8 @@
   "dependencies": {
     "chart.js": "^4.2.1",
     "leaflet": "^1.9.3"
-  }
+  },
+
+"scripts": {
+  "start": "nodemon serveur.js"}
 }
