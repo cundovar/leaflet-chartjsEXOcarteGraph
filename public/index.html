@@ -143,6 +143,12 @@ fetch("insect_data.json")
     let labels = ["nombre insectes < 5", "nombre insectes < 20", "nombre insectes < 50", "nombre insectes > 100"];
     let values = [featuresBelow5.length, featuresBelow20.length, featuresBelow50.length, featuresAbove100.length];
     let colors = ["#FD8D3C", "#FC4E2A", "#E31A1C", "#800026"];
+    let legendPosition = "top"; // position par défaut
+
+if (window.innerWidth < 768) {
+  // écran mobile
+  legendPosition = "left";
+}
 
     // Création du graphique avec Chart.js
     let ctx = document.querySelector("#monGraph");
@@ -160,7 +166,7 @@ fetch("insect_data.json")
       },
       options: {
         legend: {
-          position: "top",
+          position: legendPosition,
           labels: {
             usePointStyle: true,
             boxWidth: 10,
