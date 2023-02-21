@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {#
-    <link rel="stylesheet" href="./styles.css"> #}
-    {#
-    <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />/ #}
+
+
+
+    <link rel="stylesheet" href="../node_modules/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
         integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
 
@@ -21,6 +22,9 @@
 <body>
 
     <style>
+        body{
+            background-color: antiquewhite;
+        }
         .container {
             display: flex;
             justify-content: center;
@@ -35,17 +39,67 @@
 
         }
 
+        .logo-opie {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            
+
+
+
+        }
+        .titre{
+            width: 70%;    
+            border-radius: 15px;   
+            background-color: rgb(107, 197, 137); 
+            padding: 5px;
+            max-height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            
+        }
+        h3{
+            text-align: center;
+        }
+        .texte{
+                width: 90%;
+                margin: auto;
+                margin-top: 1rem;
+                border-radius: 15px;
+                padding: 20px;
+                background-color: rgb(241, 188, 39);
+            }
+        
+        
+
+
         #map {
             /* border: solid red 1px; */
             width: 500px;
             height: 500px;
-            margin-top: 10rem;
+            margin-top: 5rem;
+            margin-bottom: 2rem;
         }
 
         #map .leaflet-pane {
             background-color: pink;
         }
 
+
+        @media screen and (min-width: 801px) {
+            .texte{
+                text-align: center;
+                width: 70%;
+                font-size: 18px;
+                background-color: rgb(223, 209, 191);
+            }
+            ol{
+                display: none;
+            }
+
+        }
         @media screen and (max-width: 800px) {
             .container {
                 flex-direction: column;
@@ -63,13 +117,46 @@
             }
 
             #map {
-                width: 98%;
+                width: 90%;
+            }
+
+            .logo-opie img {
+                width: 50px;
+            }
+          
+            p{
+                font-size: 18px;
             }
 
         }
     </style>
 
+    <div class="logo-opie">
+        <a href="https://atlas-odonates.insectes.org/">
+            <img src="./images/logo.svg" />
+
+        </a>
+        <div class="titre">
+            <h3>exercice création d'une carte et graphique</h3>
+        </div>
+    </div>
+
+    <div class="texte">
+        <p>
+            j'ai improvisé une carte et un graphique avec des données imaginaires issues d'un fichier json. j'ai  lié ce fichier à la carte et au graphique. </p>
+           <p>Quand le fichier de données est modifié alors la carte et la graphique se modifient.
+        </p>
+        <ol>
+            <li>leaflet.js</li>
+            <li>chartJs</li>
+        </ol>
+        <div>
+            <a href="https://github.com/cundovar/leaflet-chartjsEXOcarteGraph">voir le code</a>
+        </div>
+    </div>
+
     <div class="container ">
+
 
         <div id="map"></div>
         <div class="chart">
@@ -190,22 +277,23 @@
 
     </script>
 
-    {# //
-    <script src="../node_modules/leaflet/dist/leaflet.js"></script> #}
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
 
     <script src="https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js"
         integrity="sha512-i9mZ/0lnBMdKZjkVQXImtZbWzrhomyyQzXarfT4ki1eD/Bi+rcV4lFyzX52lbRQtqj070JQea4p8QNCMrHzuYg=="
         crossorigin=""></script>
 
-    {#
-    <script src="./js.js" /> #}
+    <script src="./js.js" />
+
 
 
     <script

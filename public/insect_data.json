@@ -120,6 +120,40 @@
         "properties": {
           "insectCount": 25
         }
+      },
+
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [1.4300, 47.2276]
+        },
+        "properties": {
+          "insectCount": 88
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [1.4552, 42.2276]
+        },
+        "properties": {
+          "insectCount": 122
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [1.4342, 46.2276]
+        },
+        "properties": {
+          "insectCount": 12
+        }
       }
+
+
+
     ]}
     

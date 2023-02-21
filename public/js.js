@@ -37,6 +37,9 @@ fetch("insect_data.json")
       "Insectes par maille": insectLayer,
     };
     L.control.layers(null, overlayMaps).addTo(map);
+
+    
+
   });
 
 function getColor(d) {
@@ -51,6 +54,8 @@ function getColor(d) {
     
     : "";
 }
+
+
 
 // ****** chart.js********
 
