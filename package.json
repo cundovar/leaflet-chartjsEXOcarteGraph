@@ -5,5 +5,8 @@
   },
 
 "scripts": {
-  "start": "nodemon serveur.js"}
+  "start": "nodemon serveur.js",
+  "install-client": "cd leaffeft && npm install",
+  "heroku-postbuild":"npm run install-client && npm run build",
+  "build":"cd leaffeft && npm run build"}
 }
