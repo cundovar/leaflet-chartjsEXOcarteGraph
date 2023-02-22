@@ -131,3 +131,18 @@ fetch("insect_data.json")
 
   
 
+let canvas = document.querySelector("#graph2");
+
+// Création de la div
+let div = document.createElement("div");
+div.style.position = "absolute";
+
+div.innerText = "carte et un graphique avec des données imaginaires issues d'un fichier json. j'ai lié ce fichier à la carte et au graphique.";
+
+div.style.background = "white";
+div.style.zIndex = "1";
+canvas.style.zIndex = "0";
+
+// Ajout de la div au conteneur du canvas
+canvas.parentNode.appendChild(div);
+  
