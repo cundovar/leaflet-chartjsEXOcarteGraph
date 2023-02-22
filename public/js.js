@@ -137,7 +137,7 @@ let canvas = document.querySelector("#graph2");
 let div = document.createElement("div");
 div.style.position = "absolute";
 
-div.innerText = "carte et un graphique avec des données imaginaires issues d'un fichier json. j'ai lié ce fichier à la carte et au graphique.";
+div.innerText = "petit text test pour div dessus graphique ";
 
 div.style.background = "white";
 div.style.zIndex = "1";
