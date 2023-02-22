@@ -22,9 +22,10 @@
 <body>
 
     <style>
-        body{
+        body {
             background-color: antiquewhite;
         }
+
         .container {
             display: flex;
             justify-content: center;
@@ -43,36 +44,54 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            
+
 
 
 
         }
-        .titre{
-            width: 70%;    
-            border-radius: 15px;   
-            background-color: rgb(107, 197, 137); 
+
+        .titre {
+            width: 70%;
+            border-radius: 15px;
+            background-color: rgb(107, 197, 137);
             padding: 5px;
             max-height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
-            
-            
+
+
         }
-        h3{
+
+        h3 {
             text-align: center;
         }
-        .texte{
-                width: 90%;
-                margin: auto;
-                margin-top: 1rem;
-                border-radius: 15px;
-                padding: 20px;
-                background-color: rgb(241, 188, 39);
-            }
-        
-        
+
+        .texte {
+            width: 90%;
+            margin: auto;
+            margin-top: 1rem;
+            border-radius: 15px;
+            padding: 20px;
+            background-color: rgb(241, 188, 39);
+        }
+
+        .canvas2 {
+            width: 50%;
+            position: relative;
+            margin: auto;
+
+        }
+
+        .chart-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
 
 
         #map {
@@ -87,19 +106,45 @@
             background-color: pink;
         }
 
+        #graph2 {
+            position: relative;
+            z-index: 0;
+        }
+
+        #graph2+div {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            /* bottom: 10px; */
+            width: 100px;
+            padding: 10px;
+            background: white;
+            z-index: 1;
+            font-size: 15px;
+            box-shadow: 1px 1px 1px 1px;
+        }
+
+
+
+
+
+
+
 
         @media screen and (min-width: 801px) {
-            .texte{
+            .texte {
                 text-align: center;
                 width: 70%;
                 font-size: 18px;
                 background-color: rgb(223, 209, 191);
             }
-            ol{
+
+            ol {
                 display: none;
             }
 
         }
+
         @media screen and (max-width: 800px) {
             .container {
                 flex-direction: column;
@@ -114,6 +159,10 @@
 
             .chart2 {
                 width: 300px;
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-content: center;
             }
 
             #map {
@@ -123,9 +172,13 @@
             .logo-opie img {
                 width: 50px;
             }
-          
-            p{
+
+            p {
                 font-size: 18px;
+            }
+
+            .canvas2 {
+                width: 90%;
             }
 
         }
@@ -143,8 +196,9 @@
 
     <div class="texte">
         <p>
-            j'ai improvisé une carte et un graphique avec des données imaginaires issues d'un fichier json. j'ai  lié ce fichier à la carte et au graphique. </p>
-           <p>Quand le fichier de données est modifié alors la carte et la graphique se modifient.
+            j'ai improvisé une carte et un graphique avec des données imaginaires issues d'un fichier json. j'ai lié ce
+            fichier à la carte et au graphique. </p>
+        <p>Quand le fichier de données est modifié alors la carte et le graphique se modifient.
         </p>
         <ol>
             <li>leaflet.js</li>
@@ -166,6 +220,14 @@
             </div>
         </div>
     </div>
+    <div class="canvas2">
+
+        <canvas id="graph2" width="150" height="100">
+
+        </canvas>
+
+    </div>
+
 
 
 
@@ -187,7 +249,7 @@
                 // Créer une couche de cercles pour chaque maille
                 var insectLayer = L.geoJSON(data, {
                     pointToLayer: function (feature, latlng) {
-                        // var radius = feature.properties.insectCount * 2; // taille du cercle en fonction du nombre d'insectes
+
                         var color = getColor(feature.properties.insectCount); // couleur du cercle en fonction du nombre d'insectes
                         return L.circleMarker(latlng, {
                             //   radius: radius,
@@ -202,10 +264,7 @@
                 // Ajouter la couche de cercles à la carte
                 insectLayer.addTo(map);
 
-                // Ajouter un contrôle de couches à la carte
-                var overlayMaps = {
-                    "Insectes par maille": insectLayer,
-                };
+
                 L.control.layers(null, overlayMaps).addTo(map);
             });
 
@@ -230,21 +289,26 @@
             .then((response) => response.json())
             .then((data) => {
                 // Filtrer les features selon les insectCount
-                let featuresBelow5 = data.features.filter((feature) => feature.properties.insectCount < 5);
-                let featuresBelow20 = data.features.filter((feature) => feature.properties.insectCount >= 5 && feature.properties.insectCount < 20);
-                let featuresBelow50 = data.features.filter((feature) => feature.properties.insectCount >= 20 && feature.properties.insectCount < 50);
-                let featuresAbove100 = data.features.filter((feature) => feature.properties.insectCount >= 100);
+                let features5 = data.features.filter((feature) => feature.properties.insectCount < 5);
+
+                let features20 = data.features.filter((feature) => feature.properties.insectCount >= 5 &&
+                    feature.properties.insectCount < 20);
+
+                let features50 = data.features.filter((feature) => feature.properties.insectCount >= 20 &&
+                    feature.properties.insectCount < 50);
+
+                let features100 = data.features.filter((feature) => feature.properties.insectCount >= 100);
 
                 // Création des labels, valeurs et couleurs pour le graphique
                 let labels = ["nombre insectes < 5", "nombre insectes < 20", "nombre insectes < 50", "nombre insectes > 100"];
-                let values = [featuresBelow5.length, featuresBelow20.length, featuresBelow50.length, featuresAbove100.length];
+                let values = [features5.length, features20.length, features50.length, features100.length];
                 let colors = ["#FD8D3C", "#FC4E2A", "#E31A1C", "#800026"];
 
 
                 let legendPosition = "top"; // position par défaut
-                if (window.innerWidth < 768) {
+                if (window.innerWidth < 850) {
                     // écran mobile
-                    legendPosition = 'chartArea';
+                    legendPosition = 'right';
                 }
 
                 // Création du graphique avec Chart.js
@@ -274,6 +338,47 @@
                     },
                 });
             });
+
+
+        //******** graph2 */
+
+
+        let ctx2 = document.querySelector("#graph2");
+        let graph2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+
+        })
+
+        // ajout texte dans graph2
+        let canvas = document.querySelector("#graph2");
+
+        // Création de la div
+        let div = document.createElement("div");
+        div.style.position = "absolute";
+
+        div.innerText = "carte et un graphique avec des données imaginaires issues d'un fichier json. j'ai lié ce fichier à la carte et au graphique.";
+
+        div.style.background = "white";
+        div.style.zIndex = "1";
+        canvas.style.zIndex = "0";
+
+        // Ajout de la div au conteneur du canvas
+        canvas.parentNode.appendChild(div);
 
     </script>
 

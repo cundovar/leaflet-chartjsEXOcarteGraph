@@ -1,3 +1,4 @@
+// const { Chart } = require("chart.js");
 
 
 // var map = L.map('map').setView([46.7111, 1.7191], 6);
@@ -17,7 +18,7 @@ fetch("insect_data.json")
     // Créer une couche de cercles pour chaque maille
     var insectLayer = L.geoJSON(data, {
       pointToLayer: function (feature, latlng) {
-        // var radius = feature.properties.insectCount * 2; // taille du cercle en fonction du nombre d'insectes
+       
         var color = getColor(feature.properties.insectCount); // couleur du cercle en fonction du nombre d'insectes
         return L.circleMarker(latlng, {
           //   radius: radius,
@@ -32,11 +33,8 @@ fetch("insect_data.json")
     // Ajouter la couche de cercles à la carte
     insectLayer.addTo(map);
 
-    // Ajouter un contrôle de couches à la carte
-    var overlayMaps = {
-      "Insectes par maille": insectLayer,
-    };
-    L.control.layers(null, overlayMaps).addTo(map);
+   
+
 
     
 
@@ -76,7 +74,13 @@ fetch("insect_data.json")
     let colors = ["#FD8D3C", "#FC4E2A", "#E31A1C", "#800026"];
 
     // Création du graphique avec Chart.js
+   
+
+
+
+
     let ctx = document.querySelector("#monGraph");
+
     let graph = new Chart(ctx, {
       type: "doughnut",
       data: {
@@ -102,3 +106,43 @@ fetch("insect_data.json")
       },
     });
   });
+
+
+  let ctx = document.querySelector("#graph2");
+  let graph = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+
+  })
+
+  
+
+let canvas = document.querySelector("#graph2");
+
+// Création de la div
+let div = document.createElement("div");
+div.style.position = "absolute";
+
+div.innerText = "carte et un graphique avec des données imaginaires issues d'un fichier json. j'ai lié ce fichier à la carte et au graphique.";
+
+div.style.background = "white";
+div.style.zIndex = "1";
+canvas.style.zIndex = "0";
+
+// Ajout de la div au conteneur du canvas
+canvas.parentNode.appendChild(div);
+  
